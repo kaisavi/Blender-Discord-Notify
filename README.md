@@ -1,9 +1,9 @@
 # Blender Discord Notify
-This project, currently code named "BlenderBot", is a standalone application that will start a render and notify you when it finishes.
+This project, currently codenamed "BlenderBot", is a standalone application that will start a render and notify you when it finishes.
 # Usage
-If you would like to use this tool, dowload the [installer](https://www.dropbox.com/s/oxhcea2mcetfufx/BlenderBot-Setup.msi?dl=1)
+If you would like to use this tool, download the [installer](https://www.dropbox.com/s/oxhcea2mcetfufx/BlenderBot-Setup.msi?dl=1)
 ## Configuration
-In order to make use of this too, you need to configure it. The following is an overview of the settings:
+In order to make use of this tool, you need to configure it. The following is an overview of the settings:
 ### Main Dialog:
 | Option | Meaning |
 | --- | --- |
