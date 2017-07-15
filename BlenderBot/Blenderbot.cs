@@ -13,7 +13,7 @@ namespace Blenderbot
         }
         public static async Task Run(bool shutdown, ulong CID, string Token)
         {
-            
+            //Create Discord Client
             var discord = new DiscordClient(new DiscordConfig
             {
                 AutoReconnect = true,
@@ -23,7 +23,7 @@ namespace Blenderbot
                 Token =  Token,
                 TokenType = TokenType.Bot,
                 UseInternalLogHandler = false
-            }); //Create Discord Client
+            }); 
             //Events are processed here
             await discord.SendMessage(CID, "Render Finished");
             if (shutdown)
@@ -32,7 +32,6 @@ namespace Blenderbot
                 Environment.Exit(0);
             //End
             await discord.Connect();
-            //await Task.Delay(-1);
         }
     }
 }

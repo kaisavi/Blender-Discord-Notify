@@ -9,7 +9,7 @@ namespace BlenderBot
 {
     public partial class Form1 : Form
     {
-        public string appdata = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public string docs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         [STAThread]
         static void Main()
         {
@@ -22,13 +22,32 @@ namespace BlenderBot
 
         public void button1_Click(object sender, EventArgs e)
         {
-            string[] argsarray = File.ReadAllLines(appdata + @"\BlenderBot\prefs.cfg");
+            //Retrieve configurations
+            string[] argsarray = File.ReadAllLines(docs + @"\BlenderBot\prefs.cfg");
             string BlenderDir = argsarray[0].Split('=').Skip(1).FirstOrDefault();
             string ProjectDir = argsarray[1].Split('=').Skip(1).FirstOrDefault();
             ulong CID = Convert.ToUInt64(argsarray[2].Split('=').Skip(1).FirstOrDefault());
             string Format = argsarray[3].Split('=').Skip(1).FirstOrDefault();
-            string Token = File.ReadAllText("Token");
-            if(Format == "Use Blender Configuration")
+            string Token = _Token.SetToken();
+            #region Token
+            /*
+             * In order to prevent use of the token by unwanted applications or individuals I have included it in "Token.cs" and added that file to the .gitignore
+             * The code in "Token.cs" (without the token) looked like this:
+             * 
+             *namespace BlenderBot {
+             *	class _Token
+             *  {
+             *        public static string SetToken()
+             *        {
+             *            return "{Your Token}";
+             *        }
+             *    }
+             *
+             *}
+             * 
+             */
+            #endregion 
+            if (Format == "Use Blender Configuration")
             {
                 string args = "/c " + '"' + BlenderDir + ' ' + ProjectDir + FileName.Text + ".blend" + '"' + ' ' + $"-b -o //{FileName.Text} -f {FrameNumber.Text}" + '"';
                 Render(args, CID, Token);
@@ -77,17 +96,17 @@ namespace BlenderBot
         private void CheckConfig(object sender, EventArgs e)
         {
             
-            Console.WriteLine(appdata);
-            if (!File.Exists(appdata + @"\BlenderBot\prefs.cfg"))
+            Console.WriteLine(docs);
+            if (!File.Exists(docs + @"\BlenderBot\prefs.cfg"))
             {
-                if(Directory.Exists(appdata + @"\BlenderBot"))
+                if(Directory.Exists(docs + @"\BlenderBot"))
                 {
-                    File.Copy("prefs.cfg", appdata + @"\BlenderBot\prefs.cfg");
+                    File.Copy("prefs.cfg", docs + @"\BlenderBot\prefs.cfg");
                 }
                 else
                 {
-                    Directory.CreateDirectory(appdata + @"\BlenderBot");
-                    File.Copy("prefs.cfg", appdata + @"\BlenderBot\prefs.cfg");
+                    Directory.CreateDirectory(docs + @"\BlenderBot");
+                    File.Copy("prefs.cfg", docs + @"\BlenderBot\prefs.cfg");
                 }
                 
             }
