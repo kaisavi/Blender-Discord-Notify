@@ -33,8 +33,6 @@ In order for you to be notified, you need to do the following:
   # Notes
   ## Known Issues:
   
-  Where's the source? Stay calm, it's coming soon.
-  
   Bad aesthetics. I know, refer to my catch phrase (I'm working on it).
   
   ## Planned Features:
