@@ -1,3 +1,6 @@
+# **Important**
+This is an old version. Please go to its [new repository](https://github.com/Onetimetwotimes/Blenderbot/)
+
 # Blender Discord Notify
 This project, currently codenamed "BlenderBot", is a standalone application that will start a render and notify you when it finishes.
 # Usage
